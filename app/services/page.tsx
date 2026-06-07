@@ -91,10 +91,10 @@ export default function ServicesPage() {
       {/* Header */}
       <section className="relative px-6 py-24 lg:px-8 border-b border-white/5">
         <div className="absolute inset-0 -z-10">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[400px] w-[600px] rounded-full bg-violet-600/8 blur-[100px]" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[400px] w-[600px] rounded-full bg-blue-600/8 blur-[100px]" />
         </div>
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-medium text-violet-400 mb-4 uppercase tracking-widest">Services</p>
+          <p className="text-sm font-medium text-blue-400 mb-4 uppercase tracking-widest">Services</p>
           <h1 className="text-4xl lg:text-5xl font-bold tracking-tight mb-6">
             Five lines. One{" "}
             <span className="gradient-text">standard.</span>
@@ -117,13 +117,13 @@ export default function ServicesPage() {
                 {/* Left */}
                 <div className="lg:col-span-2">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="h-10 w-10 rounded-xl bg-violet-500/10 flex items-center justify-center">
-                      <service.icon size={20} className="text-violet-400" />
+                    <div className="h-10 w-10 rounded-xl bg-blue-500/10 flex items-center justify-center">
+                      <service.icon size={20} className="text-blue-400" />
                     </div>
                     <span className="text-xs text-zinc-500 font-mono">0{i + 1}</span>
                   </div>
                   <h2 className="text-2xl font-bold mb-1">{service.title}</h2>
-                  <p className="text-violet-300 text-sm font-medium mb-4">{service.tagline}</p>
+                  <p className="text-blue-300 text-sm font-medium mb-4">{service.tagline}</p>
                   <p className="text-zinc-400 leading-relaxed mb-6">{service.description}</p>
 
                   <ul className="space-y-2">
@@ -148,7 +148,7 @@ export default function ServicesPage() {
                   </div>
                   <Link
                     href="/contact"
-                    className="inline-flex items-center gap-2 text-sm font-semibold text-violet-400 hover:text-violet-300 transition-colors"
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-blue-400 hover:text-blue-300 transition-colors"
                   >
                     Get a quote <ArrowRight size={15} />
                   </Link>
@@ -168,7 +168,7 @@ export default function ServicesPage() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-violet-600 to-violet-500 px-8 py-4 text-base font-semibold text-white shadow-xl shadow-violet-500/20 hover:from-violet-500 hover:to-violet-400 transition-all duration-200"
+            className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 px-8 py-4 text-base font-semibold text-white shadow-xl shadow-blue-500/20 hover:from-blue-500 hover:to-blue-400 transition-all duration-200"
           >
             Book a free AI audit
             <ArrowRight size={18} />

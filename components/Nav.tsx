@@ -22,7 +22,7 @@ export default function Nav() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-violet-500 to-cyan-500 flex items-center justify-center text-white font-bold text-sm">
+            <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-blue-500 to-amber-500 flex items-center justify-center text-white font-bold text-sm">
               M
             </div>
             <span className="font-semibold text-lg tracking-tight">
@@ -51,7 +51,7 @@ export default function Nav() {
           <div className="hidden md:block">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-violet-600 to-violet-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-violet-500/20 hover:from-violet-500 hover:to-violet-400 transition-all duration-200"
+              className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-blue-500/20 hover:from-blue-500 hover:to-blue-400 transition-all duration-200"
             >
               Get in touch
             </Link>
@@ -85,7 +85,7 @@ export default function Nav() {
             <Link
               href="/contact"
               onClick={() => setOpen(false)}
-              className="mx-2 rounded-lg bg-gradient-to-r from-violet-600 to-violet-500 px-4 py-2 text-sm font-semibold text-white text-center"
+              className="mx-2 rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 px-4 py-2 text-sm font-semibold text-white text-center"
             >
               Get in touch
             </Link>

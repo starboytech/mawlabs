@@ -85,13 +85,13 @@ export default function HomePage() {
       <section className="relative overflow-hidden px-6 py-32 lg:py-44 lg:px-8">
         {/* Background glow */}
         <div className="absolute inset-0 -z-10">
-          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 h-[600px] w-[600px] rounded-full bg-violet-600/10 blur-[120px]" />
-          <div className="absolute top-1/3 left-1/3 h-[400px] w-[400px] rounded-full bg-cyan-500/5 blur-[100px]" />
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 h-[600px] w-[600px] rounded-full bg-blue-600/10 blur-[120px]" />
+          <div className="absolute top-1/3 left-1/3 h-[400px] w-[400px] rounded-full bg-amber-500/5 blur-[100px]" />
         </div>
 
         <div className="mx-auto max-w-4xl text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-violet-500/20 bg-violet-500/5 px-4 py-1.5 text-sm text-violet-300 mb-8">
-            <span className="h-1.5 w-1.5 rounded-full bg-violet-400 animate-pulse" />
+          <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/5 px-4 py-1.5 text-sm text-blue-300 mb-8">
+            <span className="h-1.5 w-1.5 rounded-full bg-blue-400 animate-pulse" />
             AI-Native Engineering Company
           </div>
 
@@ -107,7 +107,7 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-violet-600 to-violet-500 px-8 py-4 text-base font-semibold text-white shadow-xl shadow-violet-500/20 hover:from-violet-500 hover:to-violet-400 transition-all duration-200"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 px-8 py-4 text-base font-semibold text-white shadow-xl shadow-blue-500/20 hover:from-blue-500 hover:to-blue-400 transition-all duration-200"
             >
               Start with a free AI audit
               <ArrowRight size={18} />
@@ -141,8 +141,8 @@ export default function HomePage() {
                 key={service.title}
                 className="gradient-border rounded-2xl p-6 card-hover bg-zinc-950"
               >
-                <div className="h-10 w-10 rounded-xl bg-violet-500/10 flex items-center justify-center mb-4">
-                  <service.icon size={20} className="text-violet-400" />
+                <div className="h-10 w-10 rounded-xl bg-blue-500/10 flex items-center justify-center mb-4">
+                  <service.icon size={20} className="text-blue-400" />
                 </div>
                 <h3 className="font-semibold text-lg mb-2">{service.title}</h3>
                 <p className="text-zinc-400 text-sm leading-relaxed mb-4">
@@ -156,9 +156,9 @@ export default function HomePage() {
             ))}
 
             {/* CTA card */}
-            <div className="rounded-2xl bg-gradient-to-br from-violet-600/20 to-cyan-600/10 border border-violet-500/20 p-6 flex flex-col justify-between card-hover">
+            <div className="rounded-2xl bg-gradient-to-br from-blue-600/20 to-amber-600/10 border border-blue-500/20 p-6 flex flex-col justify-between card-hover">
               <div>
-                <p className="text-sm text-violet-300 font-medium mb-2">Not sure where to start?</p>
+                <p className="text-sm text-blue-300 font-medium mb-2">Not sure where to start?</p>
                 <h3 className="font-bold text-xl mb-3">Book a free AI audit</h3>
                 <p className="text-zinc-400 text-sm leading-relaxed">
                   We map your workflow, identify automation opportunities, and produce a written report — no commitment required.
@@ -166,7 +166,7 @@ export default function HomePage() {
               </div>
               <Link
                 href="/contact"
-                className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-violet-300 hover:text-white transition-colors"
+                className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-blue-300 hover:text-white transition-colors"
               >
                 Schedule audit <ArrowRight size={15} />
               </Link>
@@ -192,7 +192,7 @@ export default function HomePage() {
               </p>
               <Link
                 href="/about"
-                className="inline-flex items-center gap-2 text-violet-400 font-medium hover:text-violet-300 transition-colors"
+                className="inline-flex items-center gap-2 text-blue-400 font-medium hover:text-blue-300 transition-colors"
               >
                 How we work <ArrowRight size={16} />
               </Link>
@@ -201,8 +201,8 @@ export default function HomePage() {
             <div className="grid grid-cols-1 gap-4">
               {differentiators.map((d) => (
                 <div key={d.title} className="flex gap-4 p-5 rounded-xl border border-white/5 bg-zinc-900/50">
-                  <div className="h-9 w-9 rounded-lg bg-violet-500/10 flex items-center justify-center shrink-0">
-                    <d.icon size={18} className="text-violet-400" />
+                  <div className="h-9 w-9 rounded-lg bg-blue-500/10 flex items-center justify-center shrink-0">
+                    <d.icon size={18} className="text-blue-400" />
                   </div>
                   <div>
                     <p className="font-semibold text-sm mb-1">{d.title}</p>
@@ -231,7 +231,7 @@ export default function HomePage() {
             {process.map((p, i) => (
               <div key={p.step} className="relative">
                 {i < process.length - 1 && (
-                  <div className="hidden lg:block absolute top-5 left-[60%] right-0 h-px bg-gradient-to-r from-violet-500/30 to-transparent" />
+                  <div className="hidden lg:block absolute top-5 left-[60%] right-0 h-px bg-gradient-to-r from-blue-500/30 to-transparent" />
                 )}
                 <div className="text-4xl font-bold gradient-text mb-4">{p.step}</div>
                 <h3 className="font-semibold mb-2">{p.title}</h3>
@@ -245,7 +245,7 @@ export default function HomePage() {
       {/* CTA */}
       <section className="px-6 py-24 lg:px-8 border-t border-white/5">
         <div className="mx-auto max-w-3xl text-center">
-          <div className="relative rounded-3xl overflow-hidden border border-violet-500/20 bg-gradient-to-b from-violet-500/10 to-transparent p-12 glow">
+          <div className="relative rounded-3xl overflow-hidden border border-blue-500/20 bg-gradient-to-b from-blue-500/10 to-transparent p-12 glow">
             <h2 className="text-3xl lg:text-4xl font-bold tracking-tight mb-4">
               Ready to build something that works?
             </h2>
@@ -254,7 +254,7 @@ export default function HomePage() {
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-violet-600 to-violet-500 px-8 py-4 text-base font-semibold text-white shadow-xl shadow-violet-500/25 hover:from-violet-500 hover:to-violet-400 transition-all duration-200"
+              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 px-8 py-4 text-base font-semibold text-white shadow-xl shadow-blue-500/25 hover:from-blue-500 hover:to-blue-400 transition-all duration-200"
             >
               Book a free audit
               <ArrowRight size={18} />

@@ -31,10 +31,10 @@ export default function ContactPage() {
       {/* Header */}
       <section className="relative px-6 py-24 lg:px-8 border-b border-white/5">
         <div className="absolute inset-0 -z-10">
-          <div className="absolute bottom-0 left-1/4 h-[300px] w-[500px] rounded-full bg-violet-600/8 blur-[100px]" />
+          <div className="absolute bottom-0 left-1/4 h-[300px] w-[500px] rounded-full bg-blue-600/8 blur-[100px]" />
         </div>
         <div className="mx-auto max-w-3xl">
-          <p className="text-sm font-medium text-violet-400 mb-4 uppercase tracking-widest">Contact</p>
+          <p className="text-sm font-medium text-blue-400 mb-4 uppercase tracking-widest">Contact</p>
           <h1 className="text-4xl lg:text-5xl font-bold tracking-tight mb-6">
             Let's figure out{" "}
             <span className="gradient-text">what you need.</span>
@@ -61,8 +61,8 @@ export default function ContactPage() {
               <div className="space-y-4">
                 {details.map((d) => (
                   <div key={d.title} className="flex gap-3">
-                    <div className="h-9 w-9 rounded-lg bg-violet-500/10 flex items-center justify-center shrink-0">
-                      <d.icon size={16} className="text-violet-400" />
+                    <div className="h-9 w-9 rounded-lg bg-blue-500/10 flex items-center justify-center shrink-0">
+                      <d.icon size={16} className="text-blue-400" />
                     </div>
                     <div>
                       <p className="text-sm font-medium text-zinc-200">{d.title}</p>

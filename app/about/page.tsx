@@ -36,10 +36,10 @@ export default function AboutPage() {
       {/* Header */}
       <section className="relative px-6 py-24 lg:px-8 border-b border-white/5">
         <div className="absolute inset-0 -z-10">
-          <div className="absolute top-0 right-1/4 h-[400px] w-[500px] rounded-full bg-cyan-600/6 blur-[100px]" />
+          <div className="absolute top-0 right-1/4 h-[400px] w-[500px] rounded-full bg-amber-600/6 blur-[100px]" />
         </div>
         <div className="mx-auto max-w-3xl">
-          <p className="text-sm font-medium text-violet-400 mb-4 uppercase tracking-widest">About</p>
+          <p className="text-sm font-medium text-blue-400 mb-4 uppercase tracking-widest">About</p>
           <h1 className="text-4xl lg:text-5xl font-bold tracking-tight mb-6">
             Built by engineers.{" "}
             <span className="gradient-text">Measured by outcomes.</span>
@@ -64,7 +64,7 @@ export default function AboutPage() {
                 href="https://cramrocket.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-violet-400 hover:text-violet-300 inline-flex items-center gap-1"
+                className="text-blue-400 hover:text-blue-300 inline-flex items-center gap-1"
               >
                 CramRocket <ExternalLink size={12} />
               </Link>
@@ -128,7 +128,7 @@ export default function AboutPage() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-violet-600 to-violet-500 px-8 py-4 text-base font-semibold text-white shadow-xl shadow-violet-500/20 hover:from-violet-500 hover:to-violet-400 transition-all duration-200"
+            className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 px-8 py-4 text-base font-semibold text-white shadow-xl shadow-blue-500/20 hover:from-blue-500 hover:to-blue-400 transition-all duration-200"
           >
             Get in touch
             <ArrowRight size={18} />
