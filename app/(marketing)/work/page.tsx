@@ -7,11 +7,11 @@ const BASE = "https://mawlabs.ai";
 export const metadata: Metadata = {
   title: "Work — Built by MAW Labs",
   description:
-    "Products and systems built by MAW Labs. CramRocket: an AI study platform that reached paying users in its first 30 days.",
+    "Products and systems built by MAW Labs. CramRocket: an AI study platform launching July 2026.",
   alternates: { canonical: `${BASE}/work` },
   openGraph: {
     title: "Work — Built by MAW Labs",
-    description: "Real products, real outcomes. CramRocket launched July 2026 and hit paying users in 30 days.",
+    description: "Real products, real engineering. CramRocket — AI study platform built by MAW Labs, launching July 2026.",
     url: `${BASE}/work`,
   },
 };
@@ -58,8 +58,8 @@ const stack = [
 ];
 
 const outcomes = [
-  { metric: "30 days", label: "to paying users from launch" },
-  { metric: "95%", label: "gross margin per subscriber" },
+  { metric: "July 2026", label: "launch target" },
+  { metric: "95%", label: "projected gross margin per subscriber" },
   { metric: "4 AI models", label: "orchestrated in production" },
   { metric: "41 migrations", label: "shipped with zero downtime" },
 ];
@@ -141,8 +141,8 @@ export default function WorkPage() {
                   <span className="text-base font-bold text-blue-400">CR</span>
                 </div>
                 <h2 className="text-2xl font-bold text-white">CramRocket</h2>
-                <span className="text-xs font-medium text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full">
-                  Live
+                <span className="text-xs font-medium text-amber-400 bg-amber-500/10 px-2.5 py-1 rounded-full">
+                  Launching July 2026
                 </span>
               </div>
               <p className="text-zinc-400 max-w-xl leading-relaxed">

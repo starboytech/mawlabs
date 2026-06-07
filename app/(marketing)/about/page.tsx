@@ -93,7 +93,7 @@ export default function AboutPage() {
               >
                 CramRocket <ExternalLink size={12} />
               </Link>
-              {" "}— an AI-powered study platform that teaches from uploaded course materials using the Feynman method, generates mock exams, and tracks weak spots with spaced repetition. It launched in July 2026 and reached paying users in the first 30 days.
+              {" "}— an AI-powered study platform that teaches from uploaded course materials using the Feynman method, generates mock exams, and tracks weak spots with spaced repetition. Launching July 2026.
             </p>
             <p>
               That build made one thing clear: the same engineering stack that powers CramRocket — RAG pipelines, AI agents, full-stack Next.js, PostgreSQL, production-grade security — is exactly what most businesses need and can't find. MAW Labs is the company that delivers it.

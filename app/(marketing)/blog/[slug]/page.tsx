@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
-import { ArrowLeft, Clock, Tag } from "lucide-react";
+import { ArrowLeft, ArrowRight, Clock, Tag } from "lucide-react";
 
 const BASE = "https://mawlabs.ai";
 
@@ -190,7 +190,7 @@ export default async function BlogPostPage({ params }: Props) {
               className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 px-5 py-2.5 text-sm font-semibold text-white hover:from-blue-500 hover:to-blue-400 transition-all duration-200"
             >
               Book a free audit
-              <ArrowLeft size={14} className="rotate-180" />
+              <ArrowRight size={14} />
             </Link>
           </div>
         </div>

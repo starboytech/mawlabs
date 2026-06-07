@@ -14,6 +14,8 @@ const links = [
   { href: "/about", label: "About" },
 ];
 
+const mobileLinks = [{ href: "/", label: "Home" }, ...links];
+
 export default function Nav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -105,7 +107,7 @@ export default function Nav() {
               className="md:hidden border-t border-white/5 overflow-hidden"
             >
               <div className="py-4 flex flex-col gap-3">
-                {links.map((link, i) => (
+                {mobileLinks.map((link, i) => (
                   <motion.div
                     key={link.href}
                     initial={{ opacity: 0, x: -12 }}

@@ -19,35 +19,54 @@ export async function submitContact(
     return { error: "Please enter a valid email address." };
   }
 
-  // If Resend is configured, send the email
   const resendKey = process.env.RESEND_API_KEY;
-  if (resendKey) {
-    try {
-      await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${resendKey}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          from: "MAW Labs Contact <contact@mawlabs.ai>",
-          to: ["starboytech19@gmail.com"],
-          subject: `New inquiry: ${service} — ${name}`,
-          html: `
-            <h2>New contact form submission</h2>
-            <p><strong>Name:</strong> ${name}</p>
-            <p><strong>Email:</strong> ${email}</p>
-            ${company ? `<p><strong>Company:</strong> ${company}</p>` : ""}
-            <p><strong>Service:</strong> ${service}</p>
-            <p><strong>Message:</strong></p>
-            <p>${message.replace(/\n/g, "<br>")}</p>
-          `,
-          reply_to: email,
-        }),
-      });
-    } catch {
-      // Log silently — don't block user submission on email failure
+  if (!resendKey) {
+    return {
+      error:
+        "Email delivery is not configured. Please email us directly at contact@mawlabs.ai",
+    };
+  }
+
+  const safeMessage = message
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/\n/g, "<br>");
+
+  try {
+    const res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${resendKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: "MAW Labs Contact <contact@mawlabs.ai>",
+        to: ["starboytech19@gmail.com"],
+        subject: `New inquiry: ${service} — ${name}`,
+        html: `
+          <h2>New contact form submission</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          ${company ? `<p><strong>Company:</strong> ${company}</p>` : ""}
+          <p><strong>Service:</strong> ${service}</p>
+          <p><strong>Message:</strong></p>
+          <p>${safeMessage}</p>
+        `,
+        reply_to: email,
+      }),
+    });
+    if (!res.ok) {
+      return {
+        error:
+          "We couldn't deliver your message. Please email us directly at contact@mawlabs.ai",
+      };
     }
+  } catch {
+    return {
+      error:
+        "We couldn't deliver your message. Please email us directly at contact@mawlabs.ai",
+    };
   }
 
   return { success: true };

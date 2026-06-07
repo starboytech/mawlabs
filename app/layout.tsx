@@ -92,7 +92,7 @@ const organizationSchema = {
   },
   sameAs: [
     "https://x.com/mawlabs",
-    "https://github.com/mawlabs",
+    "https://github.com/starboytech/mawlabs",
     "https://linkedin.com/company/mawlabs",
   ],
   foundingDate: "2026",

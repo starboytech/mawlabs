@@ -54,7 +54,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://github.com/mawlabs"
+                href="https://github.com/starboytech/mawlabs"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="MAW Labs on GitHub"
