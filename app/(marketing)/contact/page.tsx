@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Contact MAW Labs — Free AI Audit",
     description:
-      "Start with a free AI audit. We map your workflow and show exactly where automation creates leverage. No commitment.",
+      "Start with a free AI audit. We map your workflow and show exactly where automation saves time and money. No commitment.",
     url: `${BASE}/contact`,
   },
 };
@@ -35,7 +35,7 @@ const details = [
   {
     icon: MessageSquare,
     title: "First step",
-    description: "A 30-minute call to understand your workflow and where AI creates leverage.",
+    description: "A 30-minute call to understand your workflow and where automation saves time.",
   },
   {
     icon: Mail,
@@ -43,6 +43,8 @@ const details = [
     description: "contact@mawlabs.ai",
   },
 ];
+
+const streakStyle = { background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.04) 8%, rgba(255,255,255,0.22) 50%, rgba(255,255,255,0.04) 92%, transparent 100%)" };
 
 export default function ContactPage() {
   return (
@@ -53,11 +55,9 @@ export default function ContactPage() {
           __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c"),
         }}
       />
+
       {/* Header */}
-      <section className="relative px-6 py-24 lg:px-8 border-b border-white/5">
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute bottom-0 left-1/4 h-[300px] w-[500px] rounded-full bg-blue-600/8 blur-[100px]" />
-        </div>
+      <section className="px-6 pt-24 pb-16 lg:px-8">
         <div className="mx-auto max-w-3xl">
           <p className="text-sm font-medium text-blue-400 mb-4 uppercase tracking-widest">Contact</p>
           <h1 className="text-4xl lg:text-5xl font-bold tracking-tight mb-6">
@@ -65,13 +65,14 @@ export default function ContactPage() {
             <span className="gradient-text">what you need.</span>
           </h1>
           <p className="text-zinc-400 text-xl leading-relaxed">
-            Start with the free AI audit — we'll map your workflow and show you exactly where automation and engineering create the most leverage. No commitment, no sales pressure.
+            Start with the free AI audit — we'll map your workflow and show you exactly where automation and engineering save the most time and money. No commitment, no sales pressure.
           </p>
         </div>
       </section>
 
       {/* Content */}
-      <section className="px-6 py-20 lg:px-8">
+      <section className="px-6 pt-0 pb-24 lg:px-8">
+        <div className="h-px w-full mb-16" style={streakStyle} />
         <div className="mx-auto max-w-5xl">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
             {/* Left info */}

@@ -49,6 +49,8 @@ const values = [
   },
 ];
 
+const streakStyle = { background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.04) 8%, rgba(255,255,255,0.22) 50%, rgba(255,255,255,0.04) 92%, transparent 100%)" };
+
 export default function AboutPage() {
   return (
     <div className="pt-16">
@@ -58,8 +60,9 @@ export default function AboutPage() {
           __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c"),
         }}
       />
+
       {/* Header */}
-      <section className="px-6 py-24 lg:px-8 border-b border-white/5">
+      <section className="px-6 pt-24 pb-16 lg:px-8">
         <div className="mx-auto max-w-3xl">
           <p className="text-sm font-medium text-blue-400 mb-4 uppercase tracking-widest">About</p>
           <h1 className="text-4xl lg:text-5xl font-bold tracking-tight mb-6">
@@ -73,7 +76,8 @@ export default function AboutPage() {
       </section>
 
       {/* Story */}
-      <section className="px-6 py-20 lg:px-8 border-b border-white/5">
+      <section className="px-6 pt-0 pb-24 lg:px-8">
+        <div className="h-px w-full mb-16" style={streakStyle} />
         <div className="mx-auto max-w-3xl">
           <h2 className="text-2xl font-bold mb-6">Where this started</h2>
           <div className="space-y-4 text-zinc-400 leading-relaxed">
@@ -100,7 +104,8 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="px-6 py-20 lg:px-8 border-b border-white/5">
+      <section className="px-6 pt-0 pb-24 lg:px-8">
+        <div className="h-px w-full mb-16" style={streakStyle} />
         <div className="mx-auto max-w-5xl">
           <h2 className="text-2xl font-bold mb-12">How we work</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -115,7 +120,8 @@ export default function AboutPage() {
       </section>
 
       {/* Stack */}
-      <section className="px-6 py-20 lg:px-8 border-b border-white/5">
+      <section className="px-6 pt-0 pb-24 lg:px-8">
+        <div className="h-px w-full mb-16" style={streakStyle} />
         <div className="mx-auto max-w-3xl">
           <h2 className="text-2xl font-bold mb-6">Our stack</h2>
           <p className="text-zinc-400 mb-8 leading-relaxed">
@@ -140,7 +146,8 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="px-6 py-20 lg:px-8">
+      <section className="px-6 pt-0 pb-24 lg:px-8">
+        <div className="h-px w-full mb-16" style={streakStyle} />
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-2xl lg:text-3xl font-bold mb-4">
             Let's build something worth measuring.

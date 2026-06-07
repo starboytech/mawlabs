@@ -170,6 +170,8 @@ const SERVICE_IDS = [
   "data-analytics",
 ];
 
+const streakStyle = { background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.04) 8%, rgba(255,255,255,0.22) 50%, rgba(255,255,255,0.04) 92%, transparent 100%)" };
+
 export default function ServicesPage() {
   return (
     <div className="pt-16">
@@ -188,11 +190,9 @@ export default function ServicesPage() {
           __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c"),
         }}
       />
+
       {/* Header */}
-      <section className="relative px-6 py-24 lg:px-8 border-b border-white/5">
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[400px] w-[600px] rounded-full bg-blue-600/8 blur-[100px]" />
-        </div>
+      <section className="px-6 pt-24 pb-16 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-sm font-medium text-blue-400 mb-4 uppercase tracking-widest">Services</p>
           <h1 className="text-4xl lg:text-5xl font-bold tracking-tight mb-6">
@@ -206,7 +206,8 @@ export default function ServicesPage() {
       </section>
 
       {/* Service cards */}
-      <section className="px-6 py-20 lg:px-8">
+      <section className="px-6 pt-0 pb-24 lg:px-8">
+        <div className="h-px w-full mb-16" style={streakStyle} />
         <div className="mx-auto max-w-5xl space-y-8">
           {services.map((service, i) => (
             <div
@@ -261,11 +262,12 @@ export default function ServicesPage() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="px-6 py-20 lg:px-8 border-t border-white/5">
+      <section className="px-6 pt-0 pb-24 lg:px-8">
+        <div className="h-px w-full mb-16" style={streakStyle} />
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-2xl lg:text-3xl font-bold mb-4">Not sure which service fits?</h2>
           <p className="text-zinc-400 mb-8">
-            Start with a free AI audit. We'll identify where automation and engineering create the most leverage for your specific business — then recommend the right service line.
+            Start with a free AI audit. We'll identify where automation and engineering create the most value for your specific business — then recommend the right service line.
           </p>
           <Link
             href="/contact"

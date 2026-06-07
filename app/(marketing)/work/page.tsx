@@ -97,6 +97,8 @@ const features = [
   },
 ];
 
+const streakStyle = { background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.04) 8%, rgba(255,255,255,0.22) 50%, rgba(255,255,255,0.04) 92%, transparent 100%)" };
+
 export default function WorkPage() {
   return (
     <div className="pt-16">
@@ -114,10 +116,7 @@ export default function WorkPage() {
       />
 
       {/* Header */}
-      <section className="relative px-6 py-24 lg:px-8 border-b border-white/5">
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute top-0 left-1/3 h-[400px] w-[500px] rounded-full bg-amber-600/5 blur-[120px]" />
-        </div>
+      <section className="px-6 pt-24 pb-16 lg:px-8">
         <div className="mx-auto max-w-3xl">
           <p className="text-sm font-medium text-blue-400 mb-4 uppercase tracking-widest">Work</p>
           <h1 className="text-4xl lg:text-5xl font-bold tracking-tight mb-6">
@@ -131,7 +130,8 @@ export default function WorkPage() {
       </section>
 
       {/* CramRocket case study */}
-      <section className="px-6 py-20 lg:px-8">
+      <section className="px-6 pt-0 pb-24 lg:px-8">
+        <div className="h-px w-full mb-16" style={streakStyle} />
         <div className="mx-auto max-w-5xl">
           {/* Project header */}
           <div className="flex items-start justify-between gap-6 mb-12 flex-wrap">
@@ -208,8 +208,9 @@ export default function WorkPage() {
       </section>
 
       {/* CTA */}
-      <section className="px-6 pb-20 lg:px-8">
-        <div className="mx-auto max-w-3xl border-t border-white/5 pt-16">
+      <section className="px-6 pt-0 pb-24 lg:px-8">
+        <div className="h-px w-full mb-16" style={streakStyle} />
+        <div className="mx-auto max-w-3xl">
           <h2 className="text-2xl font-bold text-white mb-4">
             Building something similar?
           </h2>

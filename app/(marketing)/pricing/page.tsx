@@ -94,6 +94,8 @@ const faqs = [
   },
 ];
 
+const streakStyle = { background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.04) 8%, rgba(255,255,255,0.22) 50%, rgba(255,255,255,0.04) 92%, transparent 100%)" };
+
 export default function PricingPage() {
   return (
     <div className="pt-16">
@@ -105,10 +107,7 @@ export default function PricingPage() {
       />
 
       {/* Header */}
-      <section className="relative px-6 py-24 lg:px-8 border-b border-white/5">
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute bottom-0 right-1/4 h-[350px] w-[500px] rounded-full bg-blue-600/6 blur-[100px]" />
-        </div>
+      <section className="px-6 pt-24 pb-16 lg:px-8">
         <div className="mx-auto max-w-3xl">
           <p className="text-sm font-medium text-blue-400 mb-4 uppercase tracking-widest">Pricing</p>
           <h1 className="text-4xl lg:text-5xl font-bold tracking-tight mb-6">
@@ -122,7 +121,8 @@ export default function PricingPage() {
       </section>
 
       {/* Tiers */}
-      <section className="px-6 py-20 lg:px-8">
+      <section className="px-6 pt-0 pb-24 lg:px-8">
+        <div className="h-px w-full mb-16" style={streakStyle} />
         <div className="mx-auto max-w-5xl">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {tiers.map((tier) => (
@@ -168,7 +168,8 @@ export default function PricingPage() {
       </section>
 
       {/* FAQ */}
-      <section className="px-6 py-16 lg:px-8 border-t border-white/5">
+      <section className="px-6 pt-0 pb-24 lg:px-8">
+        <div className="h-px w-full mb-16" style={streakStyle} />
         <div className="mx-auto max-w-3xl">
           <h2 className="text-2xl font-bold text-white mb-10">Common questions</h2>
           <div className="space-y-8">
@@ -183,7 +184,8 @@ export default function PricingPage() {
       </section>
 
       {/* CTA */}
-      <section className="px-6 py-20 lg:px-8">
+      <section className="px-6 pt-0 pb-24 lg:px-8">
+        <div className="h-px w-full mb-16" style={streakStyle} />
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-2xl lg:text-3xl font-bold text-white mb-4">
             Start with the free audit.
