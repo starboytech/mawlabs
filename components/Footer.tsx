@@ -100,7 +100,6 @@ export default function Footer() {
                   <Link
                     href={l.href}
                     className="text-sm text-zinc-500 hover:text-white transition-colors"
-                    {...(l.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                   >
                     {l.label}
                   </Link>
