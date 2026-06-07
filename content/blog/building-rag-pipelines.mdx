@@ -1,0 +1,79 @@
+---
+title: "What We Learned Building a RAG Pipeline in Production"
+description: "We built the retrieval system behind CramRocket — here's what the architecture looks like and what broke along the way."
+date: "2026-05-28"
+tags: ["RAG", "AI engineering", "Next.js", "Supabase"]
+readingTime: "9 min"
+---
+
+Retrieval-Augmented Generation (RAG) sounds simple in tutorials: embed your documents, store the vectors, retrieve the top-k at query time, pass them to an LLM as context. In production, every one of those steps has a failure mode that tutorials don't cover.
+
+We built the RAG system behind [CramRocket](https://cramrocket.com) — an AI study platform that teaches from uploaded course materials. The system processes PDFs, slides, and notes, stores 1536-dimensional embeddings in Postgres via pgvector, and retrieves relevant chunks to power AI tutoring sessions. Here's what the architecture looks like and what we'd do differently.
+
+## The document processing pipeline
+
+Every uploaded file goes through five stages:
+
+1. **Text extraction** — different parsers for different file types: `pdfjs-dist` for PDFs (with vision fallback for scanned documents), `mammoth` for docx, `JSZip` for pptx, `ExcelJS` for xlsx
+2. **Chunking** — splitting text into ~500-token chunks with 50-token overlap. The overlap is important — without it, a concept that spans a chunk boundary gets split in half and becomes unretrievable
+3. **Embedding** — OpenAI `text-embedding-3-small` (1536 dimensions). Each chunk gets an embedding vector
+4. **Storage** — chunks + embeddings written to Postgres. The `embedding` column is `NOT NULL` — we insert with embedding in the same operation, never insert then update
+5. **Index** — pgvector HNSW index for fast approximate nearest-neighbor search
+
+The most common failure point in early versions: inserting chunks without embeddings (e.g., batch the embed call, fail midway). Now the pipeline is atomic per chunk — if the embed fails, the chunk doesn't exist.
+
+## Chunking is harder than it looks
+
+The naive approach is split-by-token-count. The problem: a 500-token chunk that cuts mid-sentence carries less semantic signal than one that respects paragraph boundaries.
+
+Our chunker does this:
+
+1. Split by paragraph breaks first
+2. If a paragraph exceeds the token limit, split by sentence
+3. Apply overlap by prepending the last N tokens from the previous chunk
+
+This means chunks are messier in size (anywhere from 100 to 600 tokens) but much cleaner semantically. Retrieval quality went up noticeably.
+
+## The retrieval query
+
+At query time, we embed the user's question and run a cosine similarity search against all chunks belonging to that user's course:
+
+```sql
+SELECT content, 1 - (embedding <=> query_embedding) AS similarity
+FROM chunks
+WHERE course_id = $1
+ORDER BY embedding <=> query_embedding
+LIMIT 8;
+```
+
+The `<=>` operator is pgvector's cosine distance. We filter to `similarity > 0.5` — below that threshold, the chunks are noise. The 8-chunk limit gives the LLM enough context without blowing the context window budget.
+
+One thing that tripped us up: the HNSW index only kicks in when the query is structured correctly. If you're casting between float32 and float16 incorrectly, Postgres falls back to a sequential scan. We added a `search_path` guard to the function and set `SET LOCAL enable_seqscan = off` during development to catch this.
+
+## What pgvector's HNSW index actually does
+
+HNSW (Hierarchical Navigable Small World) is an approximate nearest-neighbor algorithm. "Approximate" means it doesn't guarantee the mathematically closest vectors — it guarantees a fast result that's close enough.
+
+For a RAG use case, "close enough" is fine. If the 8th most similar chunk gets swapped for the 9th, the LLM doesn't notice. The speed difference is significant: with 50,000 chunks (a user with 10 heavily-annotated courses), HNSW returns results in under 50ms. A sequential scan would take seconds.
+
+The tradeoff: HNSW uses more memory than a flat index. On Supabase Free tier, this was occasionally a problem at high load. We moved to float16 storage (`halfvec(1536)`) — same recall, half the memory.
+
+## The LLM layer
+
+Chunks go into the system prompt as numbered context blocks. We experimented with putting them inline in the user message, but the LLM follows retrieval-grounded instructions more reliably when context is explicit in the system prompt.
+
+The prompt includes a retrieval faithfulness instruction: "base your explanation only on the provided materials." Without this, the model hallucinated confidently on topics where the uploaded materials were sparse.
+
+We also added a minimum similarity gate — if no chunk scores above 0.5, we tell the user: "I don't have enough material on this topic to teach it accurately. Upload more notes on this subject." This is better than a low-confidence hallucination.
+
+## What we'd do differently
+
+**Metadata filtering at chunk level.** We store all chunks by course, but we don't store which section or topic they came from. For a large course with 500 chunks, the retrieval is noisier than it needs to be. Adding `topic` metadata and filtering at query time would improve precision.
+
+**Async processing with a proper queue.** Currently, file processing runs via `waitUntil` on Vercel Functions — it works but it's not retryable. A queue with dead-letter handling would make failures recoverable without user action.
+
+**Chunking with headers.** Documents have structure — chapters, sections, headings. A chunk from "Chapter 3: Probability" carries different weight than a chunk from the table of contents. Extracting headers during processing and prepending them to chunks would improve semantic accuracy.
+
+---
+
+The RAG stack we built for CramRocket is the same infrastructure we use for client work. If you're building a document-grounded AI system and want to talk through the architecture, the [AI audit](/contact) is a good starting point.

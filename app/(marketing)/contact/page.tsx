@@ -2,9 +2,28 @@ import type { Metadata } from "next";
 import { Mail, Clock, MessageSquare } from "lucide-react";
 import ContactForm from "./ContactForm";
 
+const BASE = "https://mawlabs.ai";
+
 export const metadata: Metadata = {
-  title: "Contact — MAW Labs",
-  description: "Get in touch with MAW Labs. Start with a free AI audit or ask about a specific service.",
+  title: "Contact — Free AI Audit",
+  description:
+    "Start with a free AI audit. We map your workflow, identify automation opportunities, and deliver a written report — no commitment. Response within one business day.",
+  alternates: { canonical: `${BASE}/contact` },
+  openGraph: {
+    title: "Contact MAW Labs — Free AI Audit",
+    description:
+      "Start with a free AI audit. We map your workflow and show exactly where automation creates leverage. No commitment.",
+    url: `${BASE}/contact`,
+  },
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: BASE },
+    { "@type": "ListItem", position: 2, name: "Contact", item: `${BASE}/contact` },
+  ],
 };
 
 const details = [
@@ -28,6 +47,12 @@ const details = [
 export default function ContactPage() {
   return (
     <div className="pt-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c"),
+        }}
+      />
       {/* Header */}
       <section className="relative px-6 py-24 lg:px-8 border-b border-white/5">
         <div className="absolute inset-0 -z-10">

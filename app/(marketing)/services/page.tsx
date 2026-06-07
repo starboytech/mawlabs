@@ -2,10 +2,87 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Bot, Code2, Shield, Cloud, BarChart3, ArrowRight, CheckCircle2 } from "lucide-react";
 
+const BASE = "https://mawlabs.ai";
+
 export const metadata: Metadata = {
-  title: "Services — MAW Labs",
-  description: "AI automation, custom software development, cybersecurity, cloud architecture, and data engineering. Every service built AI-native.",
+  title: "AI Automation, Custom Software & Cybersecurity Services",
+  description:
+    "AI automation agents, custom software development, cybersecurity audits, cloud architecture on AWS, and data engineering. Fixed-scope engagements with measurable outcomes.",
+  alternates: { canonical: `${BASE}/services` },
+  openGraph: {
+    title: "AI Automation, Custom Software & Cybersecurity Services | MAW Labs",
+    description:
+      "Five service lines built AI-native. AI agents, custom software, cybersecurity, cloud, and data engineering for US businesses.",
+    url: `${BASE}/services`,
+  },
 };
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: BASE },
+    { "@type": "ListItem", position: 2, name: "Services", item: `${BASE}/services` },
+  ],
+};
+
+const serviceSchemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "AI Automation & Agents",
+    serviceType: "AI Process Automation",
+    provider: { "@id": `${BASE}/#organization` },
+    description:
+      "Custom AI agents that automate document processing, customer support, lead qualification, invoice handling, and compliance monitoring.",
+    areaServed: { "@type": "Country", name: "United States" },
+    url: `${BASE}/services#ai-automation`,
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Custom Software Development",
+    serviceType: "Custom Software Development",
+    provider: { "@id": `${BASE}/#organization` },
+    description:
+      "Full-stack AI-native web applications built with Next.js, TypeScript, PostgreSQL, and Supabase. Internal tools, client portals, and SaaS products.",
+    areaServed: { "@type": "Country", name: "United States" },
+    url: `${BASE}/services#custom-software`,
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Cybersecurity",
+    serviceType: "Cybersecurity Consulting",
+    provider: { "@id": `${BASE}/#organization` },
+    description:
+      "Security audits, managed monitoring, and compliance preparation for SOC 2, HIPAA, and GDPR for small and mid-sized businesses.",
+    areaServed: { "@type": "Country", name: "United States" },
+    url: `${BASE}/services#cybersecurity`,
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Cloud & DevOps",
+    serviceType: "Cloud Architecture",
+    provider: { "@id": `${BASE}/#organization` },
+    description:
+      "AWS cloud architecture, Terraform infrastructure as code, CI/CD pipelines, and containerization with ongoing cost optimization.",
+    areaServed: { "@type": "Country", name: "United States" },
+    url: `${BASE}/services#cloud-devops`,
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: "Data & Analytics Engineering",
+    serviceType: "Data Engineering",
+    provider: { "@id": `${BASE}/#organization` },
+    description:
+      "ETL pipelines, analytics dashboards, and RAG systems that surface business-ready insights from scattered data sources.",
+    areaServed: { "@type": "Country", name: "United States" },
+    url: `${BASE}/services#data-analytics`,
+  },
+];
 
 const services = [
   {
@@ -85,9 +162,32 @@ const services = [
   },
 ];
 
+const SERVICE_IDS = [
+  "ai-automation",
+  "custom-software",
+  "cybersecurity",
+  "cloud-devops",
+  "data-analytics",
+];
+
 export default function ServicesPage() {
   return (
     <div className="pt-16">
+      {serviceSchemas.map((s, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(s).replace(/</g, "\\u003c"),
+          }}
+        />
+      ))}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c"),
+        }}
+      />
       {/* Header */}
       <section className="relative px-6 py-24 lg:px-8 border-b border-white/5">
         <div className="absolute inset-0 -z-10">
@@ -111,6 +211,7 @@ export default function ServicesPage() {
           {services.map((service, i) => (
             <div
               key={service.title}
+              id={SERVICE_IDS[i]}
               className="gradient-border rounded-2xl p-8 bg-zinc-950"
             >
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

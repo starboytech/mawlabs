@@ -2,9 +2,28 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, ExternalLink } from "lucide-react";
 
+const BASE = "https://mawlabs.ai";
+
 export const metadata: Metadata = {
-  title: "About — MAW Labs",
-  description: "MAW Labs is an AI-native engineering company. We build software that creates measurable outcomes for the businesses we work with.",
+  title: "About MAW Labs — AI-Native Engineering Company",
+  description:
+    "MAW Labs is an AI-native engineering company founded by Mohamed Yusuf. We build software that creates measurable outcomes — AI automation, custom software, and cybersecurity for US businesses.",
+  alternates: { canonical: `${BASE}/about` },
+  openGraph: {
+    title: "About MAW Labs — AI-Native Engineering Company",
+    description:
+      "Founded by a software engineer building production AI systems. CramRocket is our first product — launched July 2026, generating revenue in 30 days.",
+    url: `${BASE}/about`,
+  },
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: BASE },
+    { "@type": "ListItem", position: 2, name: "About", item: `${BASE}/about` },
+  ],
 };
 
 const values = [
@@ -33,6 +52,12 @@ const values = [
 export default function AboutPage() {
   return (
     <div className="pt-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema).replace(/</g, "\\u003c"),
+        }}
+      />
       {/* Header */}
       <section className="relative px-6 py-24 lg:px-8 border-b border-white/5">
         <div className="absolute inset-0 -z-10">
