@@ -14,7 +14,6 @@ const company = [
   { label: "Pricing", href: "/pricing" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
-  { label: "CramRocket", href: "https://cramrocket.com", external: true },
 ];
 
 const legal = [
