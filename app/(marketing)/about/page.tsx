@@ -59,10 +59,7 @@ export default function AboutPage() {
         }}
       />
       {/* Header */}
-      <section className="relative px-6 py-24 lg:px-8 border-b border-white/5">
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute top-0 right-1/4 h-[400px] w-[500px] rounded-full bg-amber-600/6 blur-[100px]" />
-        </div>
+      <section className="px-6 py-24 lg:px-8 border-b border-white/5">
         <div className="mx-auto max-w-3xl">
           <p className="text-sm font-medium text-blue-400 mb-4 uppercase tracking-widest">About</p>
           <h1 className="text-4xl lg:text-5xl font-bold tracking-tight mb-6">
@@ -109,7 +106,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {values.map((v) => (
               <div key={v.title} className="p-6 rounded-2xl border border-white/5 bg-zinc-900/40">
-                <h3 className="font-semibold text-lg mb-3 gradient-text">{v.title}</h3>
+                <h3 className="font-semibold text-lg mb-3 text-white">{v.title}</h3>
                 <p className="text-zinc-400 text-sm leading-relaxed">{v.description}</p>
               </div>
             ))}

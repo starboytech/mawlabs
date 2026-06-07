@@ -140,7 +140,7 @@ export default function PricingPage() {
                   </div>
                 )}
                 <h2 className="text-xl font-bold text-white mb-1">{tier.name}</h2>
-                <p className="text-2xl font-bold gradient-text mb-4">{tier.range}</p>
+                <p className="text-2xl font-bold font-mono text-white mb-4">{tier.range}</p>
                 <p className="text-sm text-zinc-400 leading-relaxed mb-4">{tier.description}</p>
 
                 <div className="text-xs font-medium text-zinc-500 uppercase tracking-widest mb-2">

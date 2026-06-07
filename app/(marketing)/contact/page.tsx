@@ -118,7 +118,7 @@ export default function ContactPage() {
 
             {/* Form */}
             <div className="lg:col-span-3">
-              <div className="gradient-border rounded-2xl p-8 bg-zinc-950">
+              <div className="border border-white/8 rounded-2xl p-8 bg-zinc-950">
                 <h2 className="text-lg font-bold mb-6">Send a message</h2>
                 <ContactForm />
               </div>

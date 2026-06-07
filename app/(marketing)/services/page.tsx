@@ -212,7 +212,7 @@ export default function ServicesPage() {
             <div
               key={service.title}
               id={SERVICE_IDS[i]}
-              className="gradient-border rounded-2xl p-8 bg-zinc-950"
+              className="border border-white/8 rounded-2xl p-8 bg-zinc-950"
             >
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 {/* Left */}

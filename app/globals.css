@@ -88,16 +88,4 @@
   .gradient-text {
     @apply bg-gradient-to-r from-blue-400 via-blue-300 to-amber-400 bg-clip-text text-transparent;
   }
-  .gradient-border {
-    background: linear-gradient(#18181b, #18181b) padding-box,
-                linear-gradient(135deg, #2563eb, #f59e0b) border-box;
-    border: 1px solid transparent;
-  }
-  .glow {
-    box-shadow: 0 0 60px rgba(37, 99, 235, 0.2), 0 0 120px rgba(245, 158, 11, 0.08);
-  }
-  .card-hover {
-    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/10;
-  }
-
 }

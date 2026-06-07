@@ -164,7 +164,7 @@ export default function WorkPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
             {outcomes.map((o) => (
               <div key={o.label} className="rounded-xl border border-white/5 bg-zinc-900/40 p-5">
-                <p className="text-2xl font-bold gradient-text mb-1">{o.metric}</p>
+                <p className="text-2xl font-bold font-mono text-white mb-1">{o.metric}</p>
                 <p className="text-sm text-zinc-500 leading-snug">{o.label}</p>
               </div>
             ))}

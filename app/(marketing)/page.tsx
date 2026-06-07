@@ -8,8 +8,6 @@ import {
 } from "lucide-react";
 import FadeIn from "@/components/FadeIn";
 import { StaggerGrid, StaggerItem } from "@/components/StaggerGrid";
-import AnimatedCounter from "@/components/AnimatedCounter";
-import TypewriterText from "@/components/TypewriterText";
 
 const services = [
   {
@@ -50,10 +48,10 @@ const services = [
 ];
 
 const stats = [
-  { value: 70, suffix: "%", label: "avg. reduction in manual processing time" },
-  { value: 35, suffix: "%", label: "avg. reduction in cloud spend" },
-  { value: 120, suffix: "K", prefix: "$", label: "avg. ransomware recovery cost — we prevent it" },
-  { value: 12, suffix: " wks", label: "concept to deployed product" },
+  { value: "70%", label: "avg. reduction in manual processing time" },
+  { value: "35%", label: "avg. reduction in cloud spend" },
+  { value: "$120K", label: "avg. ransomware recovery cost — we prevent it" },
+  { value: "12 wks", label: "concept to deployed product" },
 ];
 
 const differentiators = [
@@ -62,66 +60,43 @@ const differentiators = [
   { icon: Users, title: "Small team, senior work", description: "No juniors learning on your project. Engineers who have shipped production systems." },
 ];
 
-const process = [
-  { step: "01", title: "AI Audit", description: "Map your workflow, identify automation opportunities, written report. No commitment." },
-  { step: "02", title: "Proposal", description: "Fixed-scope proposal with defined deliverables, timeline, and outcome metrics." },
-  { step: "03", title: "Build", description: "Weekly sprints with visible progress. Working software, not status updates." },
-  { step: "04", title: "Measure", description: "After delivery we track the outcome metric we agreed on. Results become your case study." },
+const auditFindings = [
+  { workflow: "document_processing", detail: "6 hrs/day · 3 staff · fully automatable" },
+  { workflow: "lead_qualification", detail: "manual scoring · 40 leads/wk · 80% automatable" },
+  { workflow: "invoice_matching", detail: "3 hrs/wk · rule-based · fully automatable" },
+  { workflow: "reporting_pipeline", detail: "weekly Excel exports · no live data · fully replaceable" },
 ];
 
 export default function HomePage() {
   return (
     <div className="pt-16">
       {/* Hero */}
-      <section className="relative overflow-hidden px-6 pt-32 pb-28 lg:pt-44 lg:pb-36 lg:px-8">
-        {/* Background blobs */}
-        <div className="absolute inset-0 -z-10 overflow-hidden">
-          <motion.div
-            className="absolute top-1/4 left-1/2 -translate-x-1/2 h-[600px] w-[600px] rounded-full bg-blue-600/10 blur-[120px]"
-            animate={{ scale: [1, 1.15, 1], opacity: [0.6, 1, 0.6] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          />
-          <motion.div
-            className="absolute top-1/3 left-1/3 h-[400px] w-[400px] rounded-full bg-amber-500/6 blur-[100px]"
-            animate={{ scale: [1, 1.2, 1], opacity: [0.4, 0.8, 0.4] }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          />
-          <div
-            className="absolute inset-0 opacity-[0.025]"
-            style={{
-              backgroundImage: "radial-gradient(circle, #ffffff 1px, transparent 1px)",
-              backgroundSize: "32px 32px",
-            }}
-          />
-        </div>
-
-        {/* Hero content */}
+      <section className="px-6 pt-32 pb-28 lg:pt-44 lg:pb-36 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
-          <motion.div
-            initial={{ opacity: 0, y: -12 }}
+          <motion.p
+            initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/5 px-4 py-1.5 text-sm text-blue-300 mb-8"
+            transition={{ duration: 0.4 }}
+            className="text-sm font-mono text-zinc-500 tracking-wide mb-8"
           >
-            <span className="h-1.5 w-1.5 rounded-full bg-blue-400 animate-pulse" />
-            AI-Native Engineering Company
-          </motion.div>
+            Based in the US · Billed by outcome · Open to new projects
+          </motion.p>
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.6, delay: 0.05 }}
             className="text-5xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-6"
           >
-            We build{" "}
-            <br className="hidden sm:block" />
-            <TypewriterText />
+            We build software
+            <br />
+            <span className="gradient-text">that earns its keep.</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
             className="text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed mb-10"
           >
             AI automation, custom software, cybersecurity, cloud architecture, and data engineering — for businesses that need measurable results, not just technology.
@@ -130,7 +105,7 @@ export default function HomePage() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.25 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <Link
@@ -149,37 +124,78 @@ export default function HomePage() {
             </Link>
           </motion.div>
         </div>
-
-        {/* Glossy floor — polished dark surface catching light at the bottom of the hero */}
-        <div className="absolute bottom-0 inset-x-0 pointer-events-none">
-          {/* Soft ambient light bloom above the floor */}
-          <div
-            className="absolute bottom-0 inset-x-0 h-20"
-            style={{
-              background:
-                "radial-gradient(ellipse 70% 100% at 50% 100%, rgba(255,255,255,0.025) 0%, transparent 70%)",
-            }}
-          />
-        </div>
       </section>
 
       {/* Stats */}
-      <section className="bg-zinc-900/30 px-6 pt-0 pb-10 lg:px-8">
+      <section className="px-6 pt-0 pb-16 lg:px-8">
         <div
-          className="h-px w-full mb-10"
+          className="h-px w-full mb-16"
           style={{ background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.04) 8%, rgba(255,255,255,0.22) 50%, rgba(255,255,255,0.04) 92%, transparent 100%)" }}
         />
         <div className="mx-auto max-w-5xl">
-          <StaggerGrid className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((s) => (
-              <StaggerItem key={s.label}>
-                <div className="text-3xl font-bold gradient-text mb-1">
-                  <AnimatedCounter target={s.value} prefix={s.prefix} suffix={s.suffix} />
-                </div>
+              <div key={s.label} className="text-left">
+                <div className="text-3xl font-bold font-mono text-white mb-1">{s.value}</div>
                 <p className="text-xs text-zinc-500 leading-snug">{s.label}</p>
-              </StaggerItem>
+              </div>
             ))}
-          </StaggerGrid>
+          </div>
+        </div>
+      </section>
+
+      {/* What an audit actually looks like */}
+      <section className="px-6 pt-0 pb-24 lg:px-8">
+        <div
+          className="h-px w-full mb-24"
+          style={{ background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.04) 8%, rgba(255,255,255,0.22) 50%, rgba(255,255,255,0.04) 92%, transparent 100%)" }}
+        />
+        <div className="mx-auto max-w-5xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <FadeIn direction="right">
+              <p className="text-sm font-mono text-zinc-500 uppercase tracking-widest mb-4">Free AI audit</p>
+              <h2 className="text-3xl lg:text-4xl font-bold tracking-tight mb-4">
+                We map what you're doing manually.
+                <br />
+                <span className="text-zinc-500">Then we quantify the cost.</span>
+              </h2>
+              <p className="text-zinc-400 leading-relaxed mb-6">
+                Every engagement starts with a 30-minute call and a written report. No commitment. We identify which workflows are costing you hours, and whether automation is worth it.
+              </p>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 text-blue-400 font-medium hover:text-blue-300 transition-colors group"
+              >
+                Book your free audit
+                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </FadeIn>
+
+            <FadeIn direction="left">
+              <div className="rounded-xl bg-zinc-900 border border-white/8 p-6 font-mono text-sm">
+                <div className="flex items-center gap-2 mb-5">
+                  <div className="h-3 w-3 rounded-full bg-zinc-700" />
+                  <div className="h-3 w-3 rounded-full bg-zinc-700" />
+                  <div className="h-3 w-3 rounded-full bg-zinc-700" />
+                  <span className="ml-2 text-zinc-600 text-xs">maw-audit-report.txt</span>
+                </div>
+                <div className="text-zinc-500 mb-4 text-xs">// Workflow audit — Acme Legal (example)</div>
+                <div className="space-y-2">
+                  {auditFindings.map((f) => (
+                    <div key={f.workflow} className="flex flex-col sm:flex-row sm:gap-3">
+                      <span className="text-emerald-400 shrink-0">→</span>
+                      <span className="text-zinc-200 shrink-0">{f.workflow}</span>
+                      <span className="text-zinc-500 text-xs sm:text-sm">{f.detail}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-5 pt-4 border-t border-white/6 text-zinc-500">
+                  est. hours recoverable per day:{" "}
+                  <span className="text-white font-semibold">9.5 hrs</span>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
         </div>
       </section>
 
@@ -204,17 +220,13 @@ export default function HomePage() {
             {services.map((service) => (
               <StaggerItem key={service.title}>
                 <motion.div
-                  className="gradient-border rounded-2xl p-6 bg-zinc-950 h-full flex flex-col"
-                  whileHover={{ y: -4, boxShadow: "0 20px 40px rgba(37,99,235,0.12)" }}
+                  className="rounded-2xl border border-white/8 p-6 bg-zinc-950 h-full flex flex-col"
+                  whileHover={{ y: -4, boxShadow: "0 20px 40px rgba(37,99,235,0.10)", borderColor: "rgba(255,255,255,0.12)" }}
                   transition={{ duration: 0.2 }}
                 >
-                  <motion.div
-                    className="h-10 w-10 rounded-xl bg-blue-500/10 flex items-center justify-center mb-4"
-                    whileHover={{ scale: 1.15, backgroundColor: "rgba(37,99,235,0.2)" }}
-                    transition={{ duration: 0.2 }}
-                  >
+                  <div className="h-10 w-10 rounded-xl bg-blue-500/10 flex items-center justify-center mb-4">
                     <service.icon size={20} className="text-blue-400" />
-                  </motion.div>
+                  </div>
                   <h3 className="font-semibold text-lg mb-2">{service.title}</h3>
                   <p className="text-zinc-400 text-sm leading-relaxed mb-4 flex-1">
                     {service.description}
@@ -229,12 +241,12 @@ export default function HomePage() {
 
             <StaggerItem>
               <motion.div
-                className="rounded-2xl bg-gradient-to-br from-blue-600/20 to-amber-600/10 border border-blue-500/20 p-6 flex flex-col justify-between h-full"
-                whileHover={{ y: -4 }}
+                className="rounded-2xl border border-blue-500/20 bg-blue-500/5 p-6 flex flex-col justify-between h-full"
+                whileHover={{ y: -4, borderColor: "rgba(59,130,246,0.35)" }}
                 transition={{ duration: 0.2 }}
               >
                 <div>
-                  <p className="text-sm text-blue-300 font-medium mb-2">Not sure where to start?</p>
+                  <p className="text-sm text-blue-400 font-mono mb-2">$ maw audit --free</p>
                   <h3 className="font-bold text-xl mb-3">Book a free AI audit</h3>
                   <p className="text-zinc-400 text-sm leading-relaxed">
                     We map your workflow, identify automation opportunities, and produce a written report — no commitment required.
@@ -242,7 +254,7 @@ export default function HomePage() {
                 </div>
                 <Link
                   href="/contact"
-                  className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-blue-300 hover:text-white transition-colors group"
+                  className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-blue-400 hover:text-white transition-colors group"
                 >
                   Schedule audit
                   <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
@@ -304,40 +316,74 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Process */}
+      {/* How an engagement works — terminal style */}
       <section className="px-6 pt-0 pb-24 lg:px-8">
         <div
           className="h-px w-full mb-24"
           style={{ background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.04) 8%, rgba(255,255,255,0.22) 50%, rgba(255,255,255,0.04) 92%, transparent 100%)" }}
         />
-        <div className="mx-auto max-w-7xl">
-          <FadeIn className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold tracking-tight mb-4">
+        <div className="mx-auto max-w-5xl">
+          <FadeIn className="mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold tracking-tight mb-3">
               How an engagement works
             </h2>
-            <p className="text-zinc-400 text-lg max-w-xl mx-auto">
+            <p className="text-zinc-400 text-lg max-w-xl">
               No retainer until you have seen what we are building. No ambiguity on scope.
             </p>
           </FadeIn>
 
-          <StaggerGrid className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {process.map((p, i) => (
-              <StaggerItem key={p.step}>
-                <motion.div
-                  className="relative p-5 rounded-xl border border-white/5 bg-zinc-900/30 h-full"
-                  whileHover={{ borderColor: "rgba(37,99,235,0.25)", y: -3 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  {i < process.length - 1 && (
-                    <div className="hidden lg:block absolute top-8 left-[80%] right-0 h-px bg-gradient-to-r from-blue-500/30 to-transparent" />
-                  )}
-                  <div className="text-4xl font-bold gradient-text mb-4">{p.step}</div>
-                  <h3 className="font-semibold mb-2">{p.title}</h3>
-                  <p className="text-zinc-400 text-sm leading-relaxed">{p.description}</p>
-                </motion.div>
-              </StaggerItem>
-            ))}
-          </StaggerGrid>
+          <FadeIn>
+            <div className="rounded-xl bg-zinc-900 border border-white/8 overflow-hidden">
+              <div className="flex items-center gap-2 px-5 py-3 border-b border-white/6 bg-zinc-900/80">
+                <div className="h-3 w-3 rounded-full bg-zinc-700" />
+                <div className="h-3 w-3 rounded-full bg-zinc-700" />
+                <div className="h-3 w-3 rounded-full bg-zinc-700" />
+                <span className="ml-2 text-zinc-600 text-xs font-mono">engagement.log</span>
+              </div>
+              <div className="p-6 font-mono text-sm space-y-4">
+                <div>
+                  <div className="flex gap-3">
+                    <span className="text-zinc-600 select-none">01</span>
+                    <div>
+                      <span className="text-blue-400 font-semibold">AI Audit</span>
+                      <span className="text-zinc-600"> — no commitment</span>
+                      <p className="text-zinc-500 text-xs mt-1 font-sans leading-relaxed">Map your workflow, identify automation opportunities, written report delivered within 5 business days.</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border-t border-white/4 pt-4">
+                  <div className="flex gap-3">
+                    <span className="text-zinc-600 select-none">02</span>
+                    <div>
+                      <span className="text-blue-400 font-semibold">Proposal</span>
+                      <span className="text-zinc-600"> — fixed scope</span>
+                      <p className="text-zinc-500 text-xs mt-1 font-sans leading-relaxed">Defined deliverables, timeline, and outcome metric. You know exactly what you're paying for.</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border-t border-white/4 pt-4">
+                  <div className="flex gap-3">
+                    <span className="text-zinc-600 select-none">03</span>
+                    <div>
+                      <span className="text-blue-400 font-semibold">Build</span>
+                      <span className="text-zinc-600"> — weekly sprints</span>
+                      <p className="text-zinc-500 text-xs mt-1 font-sans leading-relaxed">Working software every week, not status updates. You can use what we ship as we ship it.</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="border-t border-white/4 pt-4">
+                  <div className="flex gap-3">
+                    <span className="text-zinc-600 select-none">04</span>
+                    <div>
+                      <span className="text-emerald-400 font-semibold">Measure</span>
+                      <span className="text-zinc-600"> — outcomes tracked</span>
+                      <p className="text-zinc-500 text-xs mt-1 font-sans leading-relaxed">After delivery we track the metric we agreed on. Results become your case study — we publish the numbers.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -348,27 +394,21 @@ export default function HomePage() {
           style={{ background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.04) 8%, rgba(255,255,255,0.22) 50%, rgba(255,255,255,0.04) 92%, transparent 100%)" }}
         />
         <FadeIn className="mx-auto max-w-3xl text-center">
-          <motion.div
-            className="relative rounded-3xl overflow-hidden border border-blue-500/20 bg-gradient-to-b from-blue-500/10 to-transparent p-12 glow"
-            whileHover={{ boxShadow: "0 0 80px rgba(37,99,235,0.2), 0 0 160px rgba(245,158,11,0.08)" }}
-            transition={{ duration: 0.3 }}
+          <h2 className="text-3xl lg:text-4xl font-bold tracking-tight mb-4">
+            Ready to build something that works?
+          </h2>
+          <p className="text-zinc-400 text-lg mb-8 max-w-xl mx-auto">
+            Start with a free AI audit. We will identify exactly where automation saves the most time and money for your business.
+          </p>
+          <Link
+            href="/contact"
+            className="group relative inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 px-8 py-4 text-base font-semibold text-white shadow-xl shadow-blue-500/25 hover:from-blue-500 hover:to-blue-400 transition-all duration-200 overflow-hidden"
           >
-            <h2 className="text-3xl lg:text-4xl font-bold tracking-tight mb-4">
-              Ready to build something that works?
-            </h2>
-            <p className="text-zinc-400 text-lg mb-8 max-w-xl mx-auto">
-              Start with a free AI audit. We will identify exactly where automation creates the most leverage for your business.
-            </p>
-            <Link
-              href="/contact"
-              className="group relative inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 px-8 py-4 text-base font-semibold text-white shadow-xl shadow-blue-500/25 hover:from-blue-500 hover:to-blue-400 transition-all duration-200 overflow-hidden"
-            >
-              <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-              Book a free audit
-              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <p className="text-zinc-600 text-xs mt-4">No commitment. No sales pitch. Just a written report.</p>
-          </motion.div>
+            <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+            Book a free audit
+            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+          </Link>
+          <p className="text-zinc-600 text-xs mt-4">No commitment. No sales pitch. Just a written report.</p>
         </FadeIn>
       </section>
     </div>
